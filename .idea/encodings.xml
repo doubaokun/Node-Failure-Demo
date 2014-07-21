@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/main/resources/OTS-DEV-SUB-000001-modelergy-platform.cer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/OTS-DEV-SUB-000001-modelergy-platform.pem" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/OTS-DEV-SUB-000001-modelergy-platform.pfx" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/application.conf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/logback.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/platform.svc.conf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/mdl/JsonFormats.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/mdl/package.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/svc/Boot.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/svc/Configurator.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/svc/LiveDocService.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/svc/SaaService.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/svc/SslConfiguration.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/svc/SvcHelpers.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp" charset="UTF-8" />
+  </component>
+</project>
+

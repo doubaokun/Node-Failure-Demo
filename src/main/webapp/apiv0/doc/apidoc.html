@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>SaaS Platform API Documentation</title>
+    <meta charset="utf-8">
+
+    <link rel="icon" type="image/png"  href="../../img/identicon.png">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Main stylesheet imports bootstrap css and adds custom -->
+    <link href="../../css/docstyle.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/pretty-json.css">
+    <link rel="stylesheet" type="text/css" href="../../css/formstyles.css">
+    <!--<link rel="stylesheet" type="text/css" href="../../css/jquery-ui-1.9.2.custom.css" />-->
+
+    <!-- Modernizr for browser feature-checking
+                + HTML5shiv (included in modernizr) see modernizr.com -->
+    <script src="../../js/modernizr-2.5.3.min.js"></script>
+
+    <!-- jQuery via Google + local fallback, see h5bp.com -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../js/jquery-1.10.2.min.js"><\/script>')</script>
+    <!--<script type="text/javascript" src="../../js/jquery-ui-1.9.2.custom.min.js"></script>-->
+
+    <script type="text/javascript" src="../../js/json.js" id="json"></script>
+    <script type="text/javascript" src="../../js/underscore-min.js"></script>
+    <script type="text/javascript" src="../../js/backbone-min.js"></script>
+    <script type="text/javascript" src="../../js/pretty-json-min.js"></script>
+
+    <!-- Bootstrap JS: compiled and minified -->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $('#v0').addClass('selected');
+    </script>
+
+    <!--<script type="text/javascript">-->
+
+        <!--function listMethods(context) {-->
+            <!--var methodsList = $('ul.methods', context || null);-->
+
+            <!--for (var i = 0, len = methodsList.length; i < len; i++) {-->
+                <!--$(methodsList[i]).slideDown();-->
+            <!--}-->
+        <!--}-->
+
+        <!--$(document).ready(function () {-->
+
+            <!--$('#v0').addClass('selected');-->
+
+            <!--$('li.list-methods a').click(function (event) {-->
+                <!--event.preventDefault();-->
+
+                <!--console.log('wot' + event)-->
+
+                <!--// Make sure endpoint is expanded-->
+                <!--var endpoint = $(this).closest('li.endpoint'),-->
+                        <!--methods = $('li.method form', endpoint);-->
+
+                <!--listMethods(endpoint);-->
+
+                <!--// Make sure all method forms are collapsed-->
+                <!--var visibleMethods = $.grep(methods, function (method) {-->
+                    <!--return $(method).is(':visible');-->
+                <!--})-->
+
+                <!--$(visibleMethods).each(function (i, method) {-->
+                    <!--$(method).slideUp('100');-->
+                <!--})-->
+
+                <!--$(endpoint).toggleClass('expanded', true);-->
+
+            <!--})-->
+
+        <!--});-->
+    <!--</script>-->
+
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="http://portal.modeler.gy" target=_blank><strong>Modeler.gy</strong> Simulation as a Service Platform</a>
+                <a class="btn btn-primary pull-right" href="http://portal.modeler.gy" target=_blank><b class="icon-home icon-white"></b>
+                    Portal.modeler.gy</a>
+            </div>
+            <!-- /.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /navbar-inner -->
+</div>
+<!-- /navbar -->
+
+<!--<div class="container">-->
+<div class="page-header">
+    <h2>Persistance Demo</h2>
+</div>
+
+<div class="row">
+<div class="tabbable span12">
+
+<article>
+
+<section>
+    <h3 class="title">Overview</h3>
+
+    <p>This Demo aims to show how Akka can be used to build a resilient and fault-tolerant applicaiton. </p>
+
+    <p>This live documentation site provides an access for a cluster of nodes that work together to calculate the GPA for
+        a number of grades. Nodes in the cluster can be eitehr producers or consumers. The producer nodes are responsible for
+        generating the grades while consumer nodes are responslbe for calculating the GPA for that grades.
+    </p>
+
+    <p>The code documentation for the platform is avaiable at:
+        <a class="btn btn-primary btn-mini" href="/doc/v0/api/index.html" target=_blank><b class="icon-wrench icon-white"></b>
+            Code Doc</a>
+    </p>
+    <br>
+</section>
+
+
+<section>
+
+<ul>
+<li class="endpoint">
+<h3 class="title">
+    <span class="name">GPA Calculator System</span>
+    <ul class="actions">
+        <li class="list-methods"><a href="#">List Methods</a></li>
+        <li class="expand-methods"><a href="#">Expand Methods</a></li>
+    </ul>
+</h3>
+<section>
+    <p>
+        The follwoing API endpoins show how the cluster can recive grades, and how it can caculate the GPA. It also shows how
+        the cluster will recate when losing one of the nodes.
+    </p>
+</section>
+<br>
+
+<ul style="display: block; " class="methods hidden">
+
+<li class="method get ">
+    <a name="getsim">
+        <div class="title">
+            <span class="http-method authreq">GET</span>
+            <span class="name">The total GPA</span>
+            <span class="uri">/api/v0/sim/{simid}</span>
+        </div>
+    </a>
+
+    <form class="hidden"><input value="GET" name="httpMethod" type="hidden"><input value="" name="" type="hidden">
+        <input value="/api/v0/sim/:simid"
+               name="methodUri" type="hidden">
+            <span class="description"><p class="desc_title">
+            </p><p>Retrieve the GPA <br>
+            </p>
+                <p>
+                    <p>
+                        The call returns the current GPA.
+                    </p>
+
+                </p>
+                <br>
+
+            <h4>Simulation Definition Document</h4>
+            <span id="sim1json"></span>
+
+            </span>
+        <article>
+            <section>
+                <h4>Call Description</h4>
+                <table class="parameters">
+                    <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <td class="name">parameter1</td>
+                        <td class="parameter"><input value="u8hd49" name="params[simid]"></td>
+                        <td class="type">String</td>
+                        <td class="required">R</td>
+                        <td class="description">Entity identifier
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </section>
+            <section>
+                <h4>Request Headers</h4>
+                <table class="parameters">
+                    <thead>
+                    <tr>
+                        <th>Header</th>
+                        <th>Value</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <td class="name">Accept</td>
+                        <td class="parameter"><input value="application/json" readonly></td>
+                        <td class="required">R</td>
+                        <td class="description">Accept specifier</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h4>Live Call</h4>
+                <input value="Try it!" id="getsimcall" type="submit">
+
+                <div class="liveformpoint"></div>
+            </section>
+            <section>
+                <h4>Response Document</h4>
+
+                <p>Json document containing results</p>
+            </section>
+            <section>
+                <h4>Response Codes</h4>
+
+                <div>
+                </div>
+                <table class="responsecodes">
+                    <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>200</td>
+                        <td>A successful Status call returns status headers defined in Response Headers below
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>404</td>
+                        <td>Resource not available.
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <br>
+            </section>
+
+            <section>
+                <h4>Response Headers</h4>
+
+                <div>
+                </div>
+                <table class="responseparameters">
+                    <thead>
+                    <tr>
+                        <th>Header Name</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Location</td>
+                        <td>u/r/l</td>
+                        <td>---</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </section>
+        </article>
+    </form>
+</li>
+
+<li class="method put ">
+    <a name="putsimmeta">
+        <div class="title">
+            <span class="http-method authreq">PUT</span>
+            <span class="name">Insert a grade</span>
+            <span class="uri">/api/v0/sim/</span>
+        </div>
+    </a>
+
+    <form class="hidden"><input value="PUT" name="httpMethod" type="hidden"><input value="" name="" type="hidden">
+        <input value="/api/v0/sim/"
+               name="methodUri" type="hidden">
+            <span class="description"><p class="desc_title">
+                Insert Any grade between 0 and 100</p>
+                <br>
+                </p>
+                <p>
+                    <p>
+                    </p>
+
+                </p>
+                <br>
+            </span>
+        <article>
+            <section>
+                <h4>Call Description</h4>
+                <table class="parameters">
+                    <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody class="putmandatory">
+                    <div id="param21">
+                        <tr class="">
+                            <td class="name">simulation</td>
+                            <td class="parameter"><input name="rawjson[drrepdoc]"
+                                                         value= 100 />
+                            </td>
+                            <td class="type">json document</td>
+                            <td class="required">R</td>
+                            <td class="description">JSON document describing the simulation meta data</td>
+                        </tr>
+                    </div>
+                    </tbody>
+
+                </table>
+
+            </section>
+            <section>
+                <h4>Request Headers</h4>
+                <table class="parameters">
+                    <thead>
+                    <tr>
+                        <th>Header</th>
+                        <th>Value</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <td class="name">Accept</td>
+                        <td class="parameter"><input value="application/json" readonly></td>
+                        <td class="required">R</td>
+                        <td class="description">Accept specifier</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h4>Live Call</h4>
+                <input value="Try it!" id="putsetenvcall" type="submit">
+
+                <div class="liveformpoint"></div>
+            </section>
+            <section>
+                <h4>Response Document</h4>
+
+                <p>Json document containing results</p>
+            </section>
+            <section>
+                <h4>Response Codes</h4>
+
+                <div>
+                </div>
+                <table class="responsecodes">
+                    <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>200</td>
+                        <td>A successful Status call returns status headers defined in Response Headers below
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>404</td>
+                        <td>Resource not available.
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <br>
+            </section>
+
+            <section>
+                <h4>Response Headers</h4>
+
+                <div>
+                </div>
+                <table class="responseparameters">
+                    <thead>
+                    <tr>
+                        <th>Header Name</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Location</td>
+                        <td>u/r/l</td>
+                        <td>---</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </section>
+        </article>
+    </form>
+</li>
+
+
+<li class="method get ">
+    <a name="getsimlist">
+        <div class="title">
+            <span class="http-method authreq">GET</span>
+            <span class="name">Cluster's nodes</span>
+            <span class="uri">/api/v0/sim/</span>
+        </div>
+    </a>
+
+    <form class="hidden"><input value="GET" name="httpMethod" type="hidden"><input value="" name="" type="hidden">
+        <input value="/api/v0/sim/"
+               name="methodUri" type="hidden">
+            <span class="description"><p class="desc_title">
+            </p><p>List available nodes in the cluster<br>
+            </p>
+                <p>
+                    <p>
+                        The call returns a simple list of simulation identities
+                    </p>
+
+                </p>
+                <br>
+            </span>
+        <article>
+            <section>
+                <h4>Call Description</h4>
+                <table class="parameters">
+                    <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr class="">-->
+                        <!--<td class="name">parameter1</td>-->
+                        <!--<td class="parameter"><input value="u8hd49" name="params[simid]"></td>-->
+                        <!--<td class="type">String</td>-->
+                        <!--<td class="required">R</td>-->
+                        <!--<td class="description">Entity identifier-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+
+            </section>
+            <section>
+                <h4>Request Headers</h4>
+                <table class="parameters">
+                    <thead>
+                    <tr>
+                        <th>Header</th>
+                        <th>Value</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <td class="name">Accept</td>
+                        <td class="parameter"><input value="application/json" readonly></td>
+                        <td class="required">R</td>
+                        <td class="description">Accept specifier</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h4>Live Call</h4>
+                <input value="Try it!" id="getsimlistcall" type="submit">
+
+                <div class="liveformpoint"></div>
+            </section>
+            <section>
+                <h4>Response Document</h4>
+
+                <p>Json document containing results</p>
+            </section>
+            <section>
+                <h4>Response Codes</h4>
+
+                <div>
+                </div>
+                <table class="responsecodes">
+                    <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>200</td>
+                        <td>A successful Status call returns status headers defined in Response Headers below
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>404</td>
+                        <td>Resource not available.
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <br>
+            </section>
+
+            <section>
+                <h4>Response Headers</h4>
+
+                <div>
+                </div>
+                <table class="responseparameters">
+                    <thead>
+                    <tr>
+                        <th>Header Name</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Location</td>
+                        <td>u/r/l</td>
+                        <td>---</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </section>
+        </article>
+    </form>
+</li>
+</ul>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+</ul>
+
+
+
+
+</ul>
+
+</section>
+
+<script src="../../js/prettify.js"></script>
+<script src="../../js/json2.js"></script>
+<script src="../../js/docs.js"></script>
+
+<footer>
+    <span>&copy; Schneider Electric 2014</span>
+</footer>
+
+</article>
+
+</div>   <!-- tabtable span 12 -->
+</div>  <!-- row -->
+
+<!-- Initialize Scripts -->
+<script>
+    // Activate Google Prettify in this page
+    addEventListener('load', prettyPrint, false);
+
+    $(document).ready(function () {
+
+        // Add prettyprint class to pre elements
+        $('pre').addClass('prettyprint');
+
+    }); // end document.ready
+
+    var jnorm = {
+        "par": {
+            "ID": "ENTITY1000000012"
+        },
+        "par2": {
+            "ID": "CONTRA1000000023"
+        },
+        "par3": {
+            "ID": "SRVPNT1000000012"
+        },
+        "date": "2012:1"
+    };
+
+    var jmod = {
+        "toplev": {
+            "ID": "ENTITY1000000012",
+            "settings": {
+                "par1": "1",
+                "par1": "500kw",
+                "par3": "Primary"
+            }
+        },
+        "par4": {
+            "ID": "CONTRA1000000023"
+        },
+        "joinpoint": {
+            "ID": "SRVPNT1000000012",
+            "settings": {
+                "par1": 23.34587
+            }
+        },
+        "date": "2012:1"
+    };
+
+    var rnode1 = new PrettyJSON.view.Node({
+        el: $('#q1off'),
+        data: jnorm
+    });
+    rnode1.expandAll();
+
+    var rnode2 = new PrettyJSON.view.Node({
+        el: $('#q2off'),
+        data: jmod
+    });
+    rnode2.expandAll();
+</script>
+
+</body>
+</html>

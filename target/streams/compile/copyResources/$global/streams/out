@@ -1,0 +1,8 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\application.conf,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\application.conf)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\logback.xml,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\logback.xml)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\OTS-DEV-SUB-000001-modelergy-platform.cer,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\OTS-DEV-SUB-000001-modelergy-platform.cer)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\OTS-DEV-SUB-000001-modelergy-platform.pem,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\OTS-DEV-SUB-000001-modelergy-platform.pem)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\OTS-DEV-SUB-000001-modelergy-platform.pfx,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\OTS-DEV-SUB-000001-modelergy-platform.pfx)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\platform.svc.conf,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\platform.svc.conf)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Salah\Desktop\Node-Failure-Demo\src\main\resources\reference.conf,C:\Users\Salah\Desktop\Node-Failure-Demo\target\scala-2.10\classes\reference.conf)[0m
